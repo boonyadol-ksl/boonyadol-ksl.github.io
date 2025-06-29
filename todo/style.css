@@ -1,0 +1,142 @@
+:root {
+    --bg-color: white;
+    --text-color: #4f4f4f;
+    --primery-color: #4f4f4f;
+    --border-color: rgb(159,159,159);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+/* .todo-container {
+  width: 100%;
+  max-width: 500px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+} */
+
+h1 {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  margin-bottom: 1rem;
+  color: var(--primery-color);
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+#todo-input {
+  flex: 1 1 auto;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 1rem;
+  background-color: var(--bg-color);
+  outline: none;
+}
+
+#add-todo {
+  padding: 10px 16px;
+  background-color: var(--primery-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.todo-text {
+  flex: 1;
+  font-size: 1rem;
+}
+
+input[type="checkbox"]:checked + label.todo-text {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.remove-todo {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--primery-color);
+  font-size: 20px;
+}
+
+.footer{
+    margin-top: 10px;
+}
+
+#remaining-count {
+    
+  margin-top: 1rem;
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* ✨ เพิ่ม media query สำหรับจอเล็กมาก */
+@media (max-width: 400px) {
+  .todo-container {
+    padding: 15px;
+  }
+
+  #todo-input {
+    font-size: 0.9rem;
+  }
+
+  #add-todo {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+
+  .todo-text {
+    font-size: 0.9rem;
+  }
+}
