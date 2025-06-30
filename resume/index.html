@@ -1,11 +1,327 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    resume
-</body>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>เรซูเม่ - บุญญดล หม้อฤชัย</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- FontAwesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      body {
+        font-family: "Sarabun", sans-serif;
+        background-color: #f8fafc;
+        color: #1f2937;
+        -webkit-user-select: none; /* ป้องกันการเลือกข้อความบน Safari */
+        user-select: none; /* ป้องกันการเลือกข้อความ */
+      }
+      .selectable {
+        user-select: text; /* อนุญาตให้เลือกข้อความได้เมื่อจำเป็น */
+      }
+      .protected-data {
+        cursor: pointer;
+        position: relative;
+      }
+      .protected-data::after {
+        content: "คลิกเพื่อแสดง";
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(255, 255, 255, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #2563eb;
+        font-weight: 600;
+        opacity: 1;
+        transition: opacity 0.3s ease;
+      }
+      .protected-data.revealed::after {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      /* Progress bar style */
+      .progress-bar {
+        background-color: #d1d5db; /* gray-300 */
+        border-radius: 9999px;
+        height: 6px;
+        width: 100%;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        background-color: #2563eb; /* blue-600 */
+        border-radius: 9999px;
+        width: 0%;
+        transition: width 1.5s ease;
+      }
+      /* Left side background */
+      .left-bg {
+        background-color: #e0e7ff; /* สีฟ้าอ่อน */
+      }
+      h1 {
+        font-size: clamp(1.5rem, 6vw, 2.5rem);
+      }
+
+      p {
+        font-size: clamp(0.9rem, 3vw, 1.2rem);
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="max-w-6xl mx-auto my-10 shadow-lg rounded-xl overflow-hidden bg-white flex flex-col md:flex-row"
+    >
+      <!-- Left column -->
+      <div class="left-bg md:w-1/3 p-8 flex flex-col items-center space-y-8">
+        <img
+          src="https://scontent.fbkk15-1.fna.fbcdn.net/v/t39.30808-1/421388132_25564725066460436_2508212009789458830_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=106&ccb=1-7&_nc_sid=1d2534&_nc_eui2=AeF3Hkxr8guEjdbsQVAqM9UXgnHZDDeHJQuCcdkMN4clC4t0XnXjfAHuZV9kAXjUBitlz4aULCSJHacKOpEioFUW&_nc_ohc=TXiuoBO1LQUQ7kNvwH7X3AI&_nc_oc=Adn0vVD4psSPaLGFHx94gwUAyjHz_XwbvTVmQvXVAcYSUL3892slFoaa-Mmd1rYzgkA&_nc_zt=24&_nc_ht=scontent.fbkk15-1.fna&_nc_gid=J5nYKJ-3pwJ3s7roi23wIQ&oh=00_AfMNp4xS6IKVaconEJtB_Va5-8xwbkOi6CTIjt8BY17STA&oe=68682C9B"
+          alt="Profile"
+          class="rounded-full border-4 border-blue-600 w-36 h-36 object-cover"
+        />
+        
+        <p class="text-gray-700 ">BOONYADOL MORRUCHAI</p>
+        <h1 class="text-blue-700 font-semibold uppercase">บุญญดล หม้อฤชัย</h1>
+
+        <div class="w-full space-y-6">
+          <!-- Contact -->
+          <section class="fade-in" id="contact">
+            <h2
+              class="text-xl font-semibold text-blue-700 tracking-wide mb-4 border-b border-blue-300 pb-1"
+            >
+              Contact
+            </h2>
+            <ul class="space-y-2 text-gray-800 text-sm">
+              <li>
+                <i class="fas fa-envelope mr-2 text-blue-600"></i>
+                <span
+                  class="protected-data"
+                  data-value="boonyadol@kslgroup.com"
+                  onclick="revealData(this)"
+                  >อีเมล (คลิกเพื่อแสดง)</span
+                >
+              </li>
+              <li>
+                <i class="fas fa-phone mr-2 text-blue-600"></i>
+                <span
+                  class="protected-data"
+                  data-value="0828983141"
+                  onclick="revealData(this)"
+                  >เบอร์โทร (คลิกเพื่อแสดง)</span
+                >
+              </li>
+              <li>
+                <i class="fas fa-map-marker-alt mr-2 text-blue-600"></i>น้ำพอง
+                ขอนแก่น ไทย
+              </li>
+              <li>
+                <i class="fab fa-github mr-2 text-blue-600"></i>
+                <a
+                  href="https://github.com/boonyadol-ksl"
+                  target="_blank"
+                  class="hover:underline selectable"
+                  >github.com/boonyadol-ksl</a
+                >
+              </li>
+            </ul>
+          </section>
+
+          <!-- Skills -->
+          <section id="skills" class="fade-in">
+            <h2
+              class="text-xl font-semibold text-blue-700 tracking-wide mb-4 border-b border-blue-300 pb-1"
+            >
+              Skills
+            </h2>
+            <ul class="space-y-4 text-gray-800 text-sm">
+              <li>
+                <div class="mb-1 font-medium">Web Development (Full Stack)</div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 70%"></div>
+                </div>
+              </li>
+              <li>
+                <div class="mb-1 font-medium">Python Image Processing</div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 60%"></div>
+                </div>
+              </li>
+              <li>
+                <div class="mb-1 font-medium">Hardware Troubleshooting</div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 50%"></div>
+                </div>
+              </li>
+              <li>
+                <div class="mb-1 font-medium">Network Administration</div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 55%"></div>
+                </div>
+              </li>
+              <li>
+                <div class="mb-1 font-medium">IT Support for Organizations</div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 65%"></div>
+                </div>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <!-- Right column -->
+      <div class="md:w-2/3 p-8 space-y-10">
+        <section class="fade-in">
+          <h2
+            class="text-2xl font-semibold text-blue-700 tracking-wide border-b border-gray-300 pb-2 mb-6"
+          >
+            Work Experience
+          </h2>
+          <div class="space-y-8 border-l-4 border-blue-600 pl-6 relative">
+            <div
+              class="relative before:absolute before:left-[-16px] before:top-1 before:w-4 before:h-4 before:bg-blue-600 before:rounded-full before:border-2 before:border-white"
+            >
+              <h3 class="font-semibold text-gray-900">IT Support Specialist</h3>
+              <p class="italic text-gray-600 text-sm mb-2">
+                บริษัท น้ำตาลขอนแก่น จำกัด (มหาชน) | 2014 - ปัจจุบัน
+              </p>
+              <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
+                <li>Support ระบบไอทีในโรงงาน</li>
+                <li>แก้ไขปัญหา Hardware และ Network</li>
+                <li>ดูแลผู้ใช้งานกว่า 500 คน</li>
+              </ul>
+            </div>
+            <div
+              class="relative before:absolute before:left-[-16px] before:top-1 before:w-4 before:h-4 before:bg-blue-600 before:rounded-full before:border-2 before:border-white"
+            >
+              <h3 class="font-semibold text-gray-900">
+                เจ้าหน้าที่คอมพิวเตอร์
+              </h3>
+              <p class="italic text-gray-600 text-sm mb-2">
+                มหาลัยมหาสารคาม (ส่วนกองแผนงาน) | 2009 - 2010
+              </p>
+              <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
+                <li>ดูแลระบบคอมพิวเตอร์ภายในกองแผนงาน</li>
+                <li>จัดทำรายงานและสนับสนุนงาน IT</li>
+              </ul>
+            </div>
+            <div
+              class="relative before:absolute before:left-[-16px] before:top-1 before:w-4 before:h-4 before:bg-blue-600 before:rounded-full before:border-2 before:border-white"
+            >
+              <h3 class="font-semibold text-gray-900">Programmer</h3>
+              <p class="italic text-gray-600 text-sm mb-2">
+                IT ThaiSofmate | 2008
+              </p>
+            </div>
+            <div
+              class="relative before:absolute before:left-[-16px] before:top-1 before:w-4 before:h-4 before:bg-blue-600 before:rounded-full before:border-2 before:border-white"
+            >
+              <h3 class="font-semibold text-gray-900">Analyst Programmer</h3>
+              <p class="italic text-gray-600 text-sm mb-2">
+                บริษัท อัลฟาเมตริคส์ จำกัด | 2006 - 2007
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="fade-in">
+          <h2
+            class="text-2xl font-semibold text-blue-700 tracking-wide border-b border-gray-300 pb-2 mb-6"
+          >
+            Education
+          </h2>
+          <div class="border-l-4 border-blue-600 pl-6 relative">
+            <div
+              class="relative before:absolute before:left-[-16px] before:top-1 before:w-4 before:h-4 before:bg-blue-600 before:rounded-full before:border-2 before:border-white"
+            >
+              <h3 class="font-semibold text-gray-900">
+                ปริญญาตรี เอกระบบสารสนเทศเพื่อการจัดการ
+              </h3>
+              <p class="italic text-gray-600 text-sm">2002 - 2006</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      // Animation on scroll for fade-in
+      function handleFadeIn() {
+        const fadeEls = document.querySelectorAll(".fade-in");
+        fadeEls.forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight - 100) {
+            el.classList.add("visible");
+          }
+        });
+      }
+      window.addEventListener("scroll", handleFadeIn);
+      window.addEventListener("load", () => {
+        handleFadeIn();
+
+        // Animate progress bars after load
+        document.querySelectorAll(".progress-fill").forEach((el) => {
+          const width = el.style.width;
+          el.style.width = "0%";
+          setTimeout(() => {
+            el.style.width = width;
+          }, 300);
+        });
+      });
+      // ฟังก์ชันเปิดเผยข้อมูลเมื่อคลิก
+      function revealData(element) {
+        if (!element.classList.contains("revealed")) {
+          const originalValue = element.getAttribute("data-value");
+          element.textContent = originalValue;
+          element.classList.add("revealed");
+
+          // ซ่อนข้อมูลอีกครั้งหลังจาก 30 วินาที
+          setTimeout(() => {
+            element.textContent = element
+              .getAttribute("data-value")
+              .replace(/./g, "•");
+            element.classList.remove("revealed");
+          }, 30000);
+        }
+      }
+
+      // ป้องกันการคลิกขวา
+      document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+        alert("การคลิกขวาถูกปิดใช้งานเพื่อความปลอดภัยของข้อมูล");
+        return false;
+      });
+
+      // ป้องกันการลากเลือกข้อความ
+      document.addEventListener("selectstart", function (e) {
+        if (!e.target.classList.contains("selectable")) {
+          e.preventDefault();
+        }
+      });
+    </script>
+  </body>
 </html>
