@@ -120,7 +120,8 @@
                 <i class="fas fa-envelope mr-2 text-blue-600"></i>
                 <span
                   class="protected-data"
-                  data-value="boonyadol@kslgroup.com"
+                  data-value="boonyadol$kslgroup#"
+                  data-type="email"
                   onclick="revealData(this)"
                   >อีเมล (คลิกเพื่อแสดง)</span
                 >
@@ -129,7 +130,8 @@
                 <i class="fas fa-phone mr-2 text-blue-600"></i>
                 <span
                   class="protected-data"
-                  data-value="0828983141"
+                  data-value="08-2.8+98*31/41"
+                  data-type="phone"
                   onclick="revealData(this)"
                   >เบอร์โทร (คลิกเพื่อแสดง)</span
                 >
@@ -311,7 +313,14 @@
       // ฟังก์ชันเปิดเผยข้อมูลเมื่อคลิก
       function revealData(element) {
         if (!element.classList.contains("revealed")) {
-          const originalValue = element.getAttribute("data-value");
+          const dataType = element.getAttribute("data-type");
+          let originalValue = element.getAttribute("data-value");
+          if(dataType == 'email'){
+              originalValue = originalValue.replace(/\$/g, '@')  // แทนที่ $ ด้วย @
+                                           .replace(/#/g, '.com'); // แทนที่ # ด้วย .com
+          }else{
+             originalValue = originalValue.replace(/\D/g, '');
+          }
           element.textContent = originalValue;
           element.classList.add("revealed");
 
